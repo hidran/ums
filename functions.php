@@ -8,6 +8,11 @@
           return array_key_exists($param, $config) ? $config[$param] : null;
       }
 
+       function getParam($param, $default = null){
+
+         return  !empty($_REQUEST[$param])? $_REQUEST[$param]: $default;
+
+       }
     function getRandName() {
         $names = [
             'ROBERTO','GIOVANNI','GIULIA','MARIO','ALE'
@@ -81,6 +86,13 @@
 
             $conn = $GLOBALS['mysqli'];
 
+            $orderBy = array_key_exists('orderBy', $params) ? $params['orderBy'] : 'username';
+
+            $orderDir = array_key_exists('orderDir', $params) ? $params['orderDir'] : 'ASC';
+
+            if($orderDir !=='ASC' && $orderDir !=='DESC') {
+                $orderDir = 'ASC';
+            }
            $records = [];
 
            $limit = getConfig('recordsPerPage') ;
@@ -88,8 +100,9 @@
            if($limit){
                $limit = 10;
            }
-            $sql = 'SELECT * FROM users LIMIT '.$limit;
 
+            $sql = "SELECT * FROM users ORDER BY $orderBy $orderDir LIMIT $limit ";
+echo $sql;
             $res = $conn->query($sql);
             if($res) {
 
@@ -97,13 +110,15 @@
                  $records[] = $row;
              }
 
+            } else {
+                die($conn->error);
             }
 
         return $records;
 
     }
 
-var_dump(getUsers());
+
 
 
 

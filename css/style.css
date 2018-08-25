@@ -33,3 +33,15 @@ body > .container {
 code {
     font-size: 80%;
 }
+
+.table thead th.ASC:after,
+.table thead th.DESC:after
+{
+    content: '↑';
+    color: red;
+    font-weight: bold;
+   padding: 3px;
+}
+.table thead th.DESC:after {
+    content: '↓';
+}
