@@ -1,5 +1,5 @@
 <?php
-
+  require_once 'connection.php';
 
     function getRandName() {
         $names = [
@@ -44,4 +44,41 @@
     function getRandomAge(){
          return mt_rand(0, 120);
     }
-    echo getRandomAge();
+
+    function insertRandUser($totale, mysqli $conn){
+
+        while ($totale> 0) {
+
+            $username = getRandName();
+            $email = getRandEmail($username);
+            $fiscalcode = getRandFiscalCode();
+            $age = getRandomAge();
+
+            $sql = 'INSERT INTO users (username, email, fiscalcode, age) VALUES ';
+            $sql .= " ('$username','$email', '$fiscalcode', $age) ";
+            echo $totale .' '.$sql.'<br>';
+            $res = $conn->query($sql);
+            if (!$res) {
+                echo $conn->error.'<br>';
+            } else {
+                $totale--;
+            }
+        }
+    }
+
+
+insertRandUser(30, $mysqli);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //echo getRandomAge();
