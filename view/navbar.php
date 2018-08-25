@@ -15,22 +15,40 @@
             <span class="navbar-toggler-icon"></span>
 
         </button>
-
+        <?php
+          $currentUrl = $_SERVER['PHP_SELF'];
+        ?>
         <div class="collapse navbar-collapse" id="navbarCollapse">
 
             <ul class="navbar-nav mr-auto">
+                <?php
 
-                <li class="nav-item <?=stripos($_SERVER['PHP_SELF'],'index')? 'active' : ''?>">
+                $activeIndex =(stripos($currentUrl,'index') && empty($_GET['action']));
+                $class = $activeIndex? 'active' : '';
+
+                ?>
+                <li  class="nav-item  <?=$class?>">
+
+
                     <a class="nav-link" href="index.php">
                         <i class="fas fa-users"></i> Users
-                        <span class="sr-only">(current)</span></a>
+                        <?php if($activeIndex) { ?>
+                        <span class="sr-only">(current)</span>
+                        <?php } ?>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+
+                <?php
+                $activeIndex = (!empty($_GET['action']) && $_GET['action'] === 'insert');
+                $class = $activeIndex? 'active' : '';
+                ?>
+
+                <li class="nav-item  <?=$class?> ">
+                    <a class="nav-link" href="index.php?action=insert">
+                        <i class="fas fa-user-plus"></i>
+                        NEW USER</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+               
             </ul>
             <form class="form-inline mt-2 mt-md-0">
 
