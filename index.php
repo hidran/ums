@@ -8,11 +8,12 @@
 
 
     <title>Sticky Footer Navbar Template for Bootstrap</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
+    <link href="css/style.css" rel="stylesheet">
     <!-- Custom styles for this template -->
+    <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
 </head>
 
@@ -28,7 +29,9 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-users fa-2x"></i>
+                        <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -59,7 +62,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="css/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
