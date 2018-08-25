@@ -1,6 +1,13 @@
 <?php
   require_once 'connection.php';
 
+      function getConfig($param){
+
+          $config = require 'config.php';
+
+          return array_key_exists($param, $config) ? $config[$param] : null;
+      }
+
     function getRandName() {
         $names = [
             'ROBERTO','GIOVANNI','GIULIA','MARIO','ALE'
@@ -66,8 +73,37 @@
         }
     }
 
+    function getUsers( array $params = []){
 
-insertRandUser(30, $mysqli);
+        /**
+         * @var $conn mysqli
+         */
+
+            $conn = $GLOBALS['mysqli'];
+
+           $records = [];
+
+           $limit = getConfig('recordsPerPage') ;
+
+           if($limit){
+               $limit = 10;
+           }
+            $sql = 'SELECT * FROM users LIMIT '.$limit;
+
+            $res = $conn->query($sql);
+            if($res) {
+
+             while( $row = $res->fetch_assoc()) {
+                 $records[] = $row;
+             }
+
+            }
+
+        return $records;
+
+    }
+
+var_dump(getUsers());
 
 
 
@@ -81,4 +117,3 @@ insertRandUser(30, $mysqli);
 
 
 
-    //echo getRandomAge();

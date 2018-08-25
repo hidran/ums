@@ -4,6 +4,7 @@ return [
     'mysql_host' => 'localhost',
     'mysql_user' => 'root',
     'mysql_password' => 'hidran',
-    'mysql_db' => 'corsophp'
+    'mysql_db' => 'corsophp',
+    'recordsPerPage' => 10
 ];
 

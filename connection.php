@@ -1,7 +1,7 @@
 <?php
 
 
-$config = require_once 'config.php';
+$config = require 'config.php';
 
 
 $mysqli = new mysqli(
@@ -16,4 +16,4 @@ $mysqli = new mysqli(
  if($mysqli->connect_error){
      die($mysqli->connect_error);
  }
- 
+
