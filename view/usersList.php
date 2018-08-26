@@ -62,7 +62,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
                         <a onclick="return confirm('DELETE USER?')"
                            class="btn btn-danger"
 
-                           href="<?=$updateUrl?>?<?=$navOrderByQueryString?>&page=<?=$page?>&id=<?=$user['id']?>&action=delete">
+                           href="<?=$deleteUserUrl?>?<?=$navOrderByQueryString?>&page=<?=$page?>&id=<?=$user['id']?>&action=delete">
                             <i class="fa fa-trash"></i>
                             DELETE
                         </a>

@@ -44,7 +44,7 @@
                 ?>
 
                 <li class="nav-item  <?= $class ?> ">
-                    <a class="nav-link" href="index.php?action=insert">
+                    <a class="nav-link" href="updateUser.php?action=insert">
                         <i class="fas fa-user-plus"></i>
                         NEW USER</a>
                 </li>
