@@ -45,3 +45,21 @@ code {
 .table thead th.DESC:after {
     content: '↓';
 }
+
+
+#searchForm label{
+    color:#fff;
+    padding-right: 5px;
+}
+#searchForm .form-control{
+    padding: 5px;
+}
+
+
+
+
+
+
+
+
+

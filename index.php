@@ -1,6 +1,17 @@
 <?php
 require_once 'functions.php';
 require_once 'view/top.php';
+
+$page = $_SERVER['PHP_SELF'];
+
+$orderDir = getParam('orderDir', 'DESC');
+
+$orderBy = getParam('orderBy', 'id');
+
+$recordsPerPage = getParam('recordsPerPage', getConfig('recordsPerPage'));
+
+$recordsPerPageOptions = getConfig('recordsPerPageOptions',[5,10,20,30,50]);
+
 require_once 'view/navbar.php';
 ?>
 
@@ -10,23 +21,22 @@ require_once 'view/navbar.php';
     <h1>USER MANAGEMENT SYSTEM </h1>
     <?php
     $action = getParam('action');
-    $page = $_SERVER['PHP_SELF'];
+
     switch ($action) {
 
         case 'insert':
             break;
 
         default:
-            $orderDir = getParam('orderDir', 'DESC');
 
-            $orderBy = getParam('orderBy', 'id');
 
             if (!in_array($orderBy, getConfig('orderByColumns'))) {
                 $orderBy = 'id';
             }
             $params = [
                 'orderBy' => $orderBy,
-                'orderDir' => $orderDir
+                'orderDir' => $orderDir,
+                'recordsPerPage' => $recordsPerPage
             ];
 
             $users = getUsers($params);

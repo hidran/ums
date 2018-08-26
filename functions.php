@@ -1,11 +1,11 @@
 <?php
   require_once 'connection.php';
 
-      function getConfig($param){
+      function getConfig($param, $default = null){
 
           $config = require 'config.php';
 
-          return array_key_exists($param, $config) ? $config[$param] : null;
+          return array_key_exists($param, $config) ? $config[$param] : $default;
       }
 
        function getParam($param, $default = null){
@@ -90,18 +90,17 @@
 
             $orderDir = array_key_exists('orderDir', $params) ? $params['orderDir'] : 'ASC';
 
+           $limit = (int)array_key_exists('recordsPerPage', $params) ? $params['recordsPerPage'] : 10;
+
             if($orderDir !=='ASC' && $orderDir !=='DESC') {
                 $orderDir = 'ASC';
             }
            $records = [];
 
-           $limit = getConfig('recordsPerPage') ;
 
-           if($limit){
-               $limit = 10;
-           }
 
-            $sql = "SELECT * FROM users ORDER BY $orderBy $orderDir LIMIT $limit ";
+
+            $sql = "SELECT * FROM users ORDER BY $orderBy $orderDir LIMIT 0, $limit ";
 echo $sql;
             $res = $conn->query($sql);
             if($res) {

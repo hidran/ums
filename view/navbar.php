@@ -48,10 +48,28 @@
                         <i class="fas fa-user-plus"></i>
                         NEW USER</a>
                 </li>
-               
-            </ul>
-            <form class="form-inline mt-2 mt-md-0">
 
+            </ul>
+            <form class="form-inline mt-2 mt-md-0" method="get" action="<?=$page?>" id="searchForm">
+             <div class="form-group">
+               <label for="recordsPerPage ">RECORDS PER PAGE</label>
+
+                <select name="recordsPerPage" class="form-control"
+                        id="recordsPerPage"
+
+                        onchange="document.forms.searchForm.submit()">
+
+
+                    <option value="">SELECT</option>
+                    <?php
+                    foreach ($recordsPerPageOptions as $val) {
+                    ?>
+                    <option <?=$recordsPerPage == $val?'selected':''?> value="<?=$val?>"><?=$val?></option>
+
+
+                    <?php } ?>
+                </select>
+             </div>
                 <input class="form-control mr-sm-2" type="text"
 
                        placeholder="Search" aria-label="Search">
