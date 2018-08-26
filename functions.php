@@ -130,6 +130,56 @@ echo $sql;
     }
 
 
+function countUsers( array $params = []){
+
+    /**
+     * @var $conn mysqli
+     */
+
+    $conn = $GLOBALS['mysqli'];
+
+    $orderBy = array_key_exists('orderBy', $params) ? $params['orderBy'] : 'username';
+
+    $orderDir = array_key_exists('orderDir', $params) ? $params['orderDir'] : 'ASC';
+
+    $limit = (int)array_key_exists('recordsPerPage', $params) ? $params['recordsPerPage'] : 10;
+
+    $search = array_key_exists('search', $params) ? $params['search'] : '';
+
+    $search = $conn->escape_string($search);
+
+    if($orderDir !=='ASC' && $orderDir !=='DESC') {
+        $orderDir = 'ASC';
+    }
+    $total  = 0;
+
+
+
+
+    $sql = 'SELECT COUNT(*) as total FROM users ';
+    if($search){
+        $sql .= "WHERE username LIKE '%$search%' ";
+        $sql .= " OR fiscalcode LIKE '%$search%' ";
+        $sql .= " OR  email LIKE '%$search%' ";
+        $sql .= " OR age LIKE '%$search%' ";
+        $sql .= " OR id LIKE '%$search%' ";
+    }
+
+    $res = $conn->query($sql);
+    if($res) {
+
+        $row = $res->fetch_assoc();
+        $total = $row['total'];
+
+    } else {
+        die($conn->error);
+    }
+
+    return $total;
+
+}
+
+//insertRandUser(100, $mysqli);
 
 
 

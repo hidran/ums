@@ -7,12 +7,13 @@ $orderDirClass = $orderDir;
 <table class="table table-striped">
 <caption>USERS LIST</caption>
     <thead>
+    <tr><th colspan="5" class="text-center">TOTAL USERS <?=$totalUsers?> num pages<?=$numPages?></th> </tr>
     <tr>
-        <th class="<?=$orderBy ==='id'?$orderDirClass: ''?>"><a href="<?=$page?>?orderBy=id&orderDir=<?=$orderDir?>">ID</a></th>
-        <th class="<?=$orderBy ==='username'?$orderDirClass: ''?>"><a href="<?=$page?>?orderBy=username&orderDir=<?=$orderDir?>">NAME</a></th>
-        <th class="<?=$orderBy ==='fiscalcode'?$orderDirClass: ''?>"><a href="<?=$page?>?orderBy=fiscalcode&orderDir=<?=$orderDir?>">FISCAL CODE</a></th>
-        <th class="<?=$orderBy ==='email'?$orderDirClass: ''?>"><a href="<?=$page?>?orderBy=email&orderDir=<?=$orderDir?>">EMAIL </a></th>
-        <th class="<?=$orderBy ==='age'?$orderDirClass: ''?>"> <a href="<?=$page?>?orderBy=age&orderDir=<?=$orderDir?>">AGE</a></th>
+        <th class="<?=$orderBy ==='id'?$orderDirClass: ''?>"><a href="<?=$pageUrl?>?orderBy=id&orderDir=<?=$orderDir?>">ID</a></th>
+        <th class="<?=$orderBy ==='username'?$orderDirClass: ''?>"><a href="<?=$pageUrl?>?orderBy=username&orderDir=<?=$orderDir?>">NAME</a></th>
+        <th class="<?=$orderBy ==='fiscalcode'?$orderDirClass: ''?>"><a href="<?=$pageUrl?>?orderBy=fiscalcode&orderDir=<?=$orderDir?>">FISCAL CODE</a></th>
+        <th class="<?=$orderBy ==='email'?$orderDirClass: ''?>"><a href="<?=$pageUrl?>?orderBy=email&orderDir=<?=$orderDir?>">EMAIL </a></th>
+        <th class="<?=$orderBy ==='age'?$orderDirClass: ''?>"> <a href="<?=$pageUrl?>?orderBy=age&orderDir=<?=$orderDir?>">AGE</a></th>
     </tr>
     </thead>
     <tbody>

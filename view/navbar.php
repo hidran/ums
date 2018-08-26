@@ -50,7 +50,7 @@
                 </li>
 
             </ul>
-            <form class="form-inline mt-2 mt-md-0" method="get" action="<?= $page ?>" id="searchForm">
+            <form class="form-inline mt-2 mt-md-0" method="get" action="<?= $pageUrl ?>" id="searchForm">
 
                 <div class="form-group">
                     <label for="orderBy ">ORDER BY</label>
@@ -112,7 +112,7 @@
 
                     Search
                 </button>&nbsp;
-                <button onclick="location.href='<?= $page ?>'"
+                <button onclick="location.href='<?= $pageUrl ?>'"
                         class="btn btn-warning my-2 my-sm-0"
                         type="button">
 

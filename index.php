@@ -2,7 +2,7 @@
 require_once 'functions.php';
 require_once 'view/top.php';
 
-$page = $_SERVER['PHP_SELF'];
+$pageUrl = $_SERVER['PHP_SELF'];
 
 $orderDir = getParam('orderDir', 'DESC');
 
@@ -43,7 +43,8 @@ require_once 'view/navbar.php';
                 'recordsPerPage' => $recordsPerPage,
                 'search'=> $search
             ];
-
+            $totalUsers = countUsers($params);
+            $numPages = ceil($totalUsers/$recordsPerPage);
             $users = getUsers($params);
 
             require_once 'view/usersList.php';
