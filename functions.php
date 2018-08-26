@@ -107,6 +107,10 @@
             $sql = 'SELECT * FROM users ';
              if($search){
                  $sql .= "WHERE username LIKE '%$search%' ";
+                 $sql .= " OR fiscalcode LIKE '%$search%' ";
+                 $sql .= " OR  email LIKE '%$search%' ";
+                 $sql .= " OR age LIKE '%$search%' ";
+                 $sql .= " OR id LIKE '%$search%' ";
              }
             $sql .= " ORDER BY $orderBy $orderDir LIMIT 0, $limit ";
 echo $sql;
