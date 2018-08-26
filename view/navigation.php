@@ -1,7 +1,7 @@
 <nav>
     <ul class="pagination justify-content-center">
         <li class="page-item<?= $page==1 ?' disabled':''?>">
-            <a class="page-link" href="<?="$pageUrl?page=".($page-1)?>" tabindex="-1">Previous</a>
+            <a class="page-link" href="<?="$pageUrl?$navOrderByQueryString&page=".($page-1)?>" tabindex="-1">Previous</a>
         </li>
         <?php
          for ($i = 1; $i<= $numPages; $i++):
@@ -15,13 +15,20 @@
              </li>
 
          <?php else :?>
-            <li class="page-item"><a class="page-link" href="<?="$pageUrl?page=$i"?>"><?=$i?></a></li>
+            <li class="page-item">
+                <a class="page-link" href="<?="$pageUrl?$navOrderByQueryString&page=$i"?>">
+                    <?=$i?>
+                </a></li>
          <?php
             endif;
          ?>
 
         <?php endfor ?>
 
-        <li class="page-item<?= $page==$numPages ?' disabled':''?>"> <a class="page-link" href="<?="$pageUrl?page=".($page+1)?>">Next</a></li>
+        <li class="page-item<?= $page==$numPages ?' disabled':''?>">
+            <a class="page-link" href="<?="$pageUrl?$navOrderByQueryString&page=".($page+1)?>">
+                Next
+            </a>
+        </li>
     </ul>
 </nav>
