@@ -51,13 +51,18 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
             <td>
                 <div class="row">
                     <div class="col-4">
-                        <a class="btn btn-success" href="<?=$pageUrl?>?action=update">
+                        <a class="btn btn-success"
+
+                           href="<?=$updateUrl?>?<?=$navOrderByQueryString?>&page=<?=$page?>&action=update&id=<?=$user['id']?>">
                             <i class="fa fa-pen"></i>
                             UPDATE
                         </a>
                     </div>
                     <div class="col-4">
-                        <a onclick="return confirm('DELETE USER?')" class="btn btn-danger" href="<?=$pageUrl?>?id=<?=$user['id']?>&action=delete">
+                        <a onclick="return confirm('DELETE USER?')"
+                           class="btn btn-danger"
+
+                           href="<?=$updateUrl?>?<?=$navOrderByQueryString?>&page=<?=$page?>&id=<?=$user['id']?>&action=delete">
                             <i class="fa fa-trash"></i>
                             DELETE
                         </a>
