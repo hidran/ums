@@ -46,6 +46,9 @@ require_once 'view/navbar.php';
                 'search'=> $search,
                 'page' => $page
             ];
+            $orderByParams = $navigatorParams = $params;
+
+            unserialize($orderByParams['orderBy'])
             $totalUsers = countUsers($params);
 
             $numPages = ceil($totalUsers/$recordsPerPage);

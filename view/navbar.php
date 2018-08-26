@@ -51,7 +51,7 @@
 
             </ul>
             <form class="form-inline mt-2 mt-md-0" method="get" action="<?= $pageUrl ?>" id="searchForm">
-
+                <input type="hidden" name="page" id="page" value="<?=$page?>">
                 <div class="form-group">
                     <label for="orderBy ">ORDER BY</label>
 
@@ -91,7 +91,7 @@
                     <select name="recordsPerPage" class="form-control"
                             id="recordsPerPage"
 
-                            onchange="document.forms.searchForm.submit()">
+                            onchange="document.forms.searchForm.page.value=1;document.forms.searchForm.submit()">
 
 
                         <option value="">SELECT</option>
@@ -108,7 +108,7 @@
                 <input class="form-control mr-sm-2" type="text"
                        name="search" id="search" value="<?= $search ?>"
                        placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <button onclick="document.forms.searchForm.page.value=1" class="btn btn-outline-success my-2 my-sm-0" type="submit">
 
                     Search
                 </button>&nbsp;
