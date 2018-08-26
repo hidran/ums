@@ -31,12 +31,20 @@ $orderDirClass = $orderDir;
 
         <?php
            }
+           ?>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="5" class="text-center">
+            <?php
+             require_once 'navigation.php';
+            ?>
+        </td></tr></tfoot>
 
-
+<?php
       } else {
 
           echo '<tr><td colspan="5" class="text-center"> <h2>No Records foun</h2></td></tr>';
       }
     ?>
-    </tbody>
+
 </table>
