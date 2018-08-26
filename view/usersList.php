@@ -3,11 +3,11 @@ $orderDirClass = $orderDir;
 
 $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
 ?>
-<table class="table table-striped">
+<table class="table table-striped table-dark table-bordered">
     <caption>USERS LIST</caption>
     <thead>
     <tr>
-        <th colspan="5" class="text-center">TOTAL USERS <?= $totalUsers ?> num pages<?= $numPages ?></th>
+        <th colspan="6" class="text-center">TOTAL USERS <?= $totalUsers ?>. Page <?=$page?> of <?= $numPages ?></th>
     </tr>
     <tr>
         <th class="<?= $orderBy === 'id' ? $orderDirClass : '' ?>">
@@ -33,6 +33,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
                 AGE
             </a>
         </th>
+        <th>&nbsp;</th>
     </tr>
     </thead>
     <tbody>
@@ -47,6 +48,22 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
             <td><?= $user['fiscalcode'] ?></td>
             <td><a href="mailto:<?= $user['email'] ?>"> <?= $user['email'] ?></a></td>
             <td><?= $user['age'] ?></td>
+            <td>
+                <div class="row">
+                    <div class="col-4">
+                        <a class="btn btn-success" href="<?=$pageUrl?>?action=update">
+                            <i class="fa fa-pen"></i>
+                            UPDATE
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a onclick="return confirm('DELETE USER?')" class="btn btn-danger" href="<?=$pageUrl?>?id=<?=$user['id']?>&action=delete">
+                            <i class="fa fa-trash"></i>
+                            DELETE
+                        </a>
+                    </div>
+                </div>
+            </td>
         </tr>
 
         <?php
@@ -55,7 +72,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
     </tbody>
     <tfoot>
     <tr>
-        <td colspan="5" class="text-center">
+        <td colspan="6" class="text-center">
             <?php
             require_once 'navigation.php';
             ?>
@@ -66,7 +83,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
     <?php
     } else {
 
-        echo '<tr><td colspan="5" class="text-center"> <h2>No Records foun</h2></td></tr>';
+        echo '<tr><td colspan="6" class="text-center"> <h2>No Records found</h2></td></tr>';
     }
     ?>
 
