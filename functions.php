@@ -92,6 +92,13 @@
 
            $limit = (int)array_key_exists('recordsPerPage', $params) ? $params['recordsPerPage'] : 10;
 
+           $page = (int) array_key_exists('page', $params) ? $params['page'] : 0;
+
+            $start = $limit * ($page -1);
+
+            if($start< 0) {
+                $start = 0;
+            }
             $search = array_key_exists('search', $params) ? $params['search'] : '';
 
             $search = $conn->escape_string($search);
@@ -112,8 +119,8 @@
                  $sql .= " OR age LIKE '%$search%' ";
                  $sql .= " OR id LIKE '%$search%' ";
              }
-            $sql .= " ORDER BY $orderBy $orderDir LIMIT 0, $limit ";
-echo $sql;
+            $sql .= " ORDER BY $orderBy $orderDir LIMIT $start , $limit ";
+            echo $sql;
             $res = $conn->query($sql);
             if($res) {
 

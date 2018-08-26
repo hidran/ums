@@ -55,7 +55,9 @@ code {
     padding: 5px;
 }
 
-
+.pagination li.active .page-link{
+    cursor: default;
+}
 
 
 
