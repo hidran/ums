@@ -92,6 +92,10 @@
 
            $limit = (int)array_key_exists('recordsPerPage', $params) ? $params['recordsPerPage'] : 10;
 
+            $search = array_key_exists('search', $params) ? $params['search'] : '';
+
+            $search = $conn->escape_string($search);
+
             if($orderDir !=='ASC' && $orderDir !=='DESC') {
                 $orderDir = 'ASC';
             }
@@ -100,7 +104,11 @@
 
 
 
-            $sql = "SELECT * FROM users ORDER BY $orderBy $orderDir LIMIT 0, $limit ";
+            $sql = 'SELECT * FROM users ';
+             if($search){
+                 $sql .= "WHERE username LIKE '%$search%' ";
+             }
+            $sql .= " ORDER BY $orderBy $orderDir LIMIT 0, $limit ";
 echo $sql;
             $res = $conn->query($sql);
             if($res) {

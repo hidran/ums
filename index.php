@@ -12,6 +12,8 @@ $recordsPerPage = getParam('recordsPerPage', getConfig('recordsPerPage'));
 
 $recordsPerPageOptions = getConfig('recordsPerPageOptions',[5,10,20,30,50]);
 
+$search = getParam('search' ,'') ;
+
 require_once 'view/navbar.php';
 ?>
 
@@ -36,7 +38,8 @@ require_once 'view/navbar.php';
             $params = [
                 'orderBy' => $orderBy,
                 'orderDir' => $orderDir,
-                'recordsPerPage' => $recordsPerPage
+                'recordsPerPage' => $recordsPerPage,
+                'search'=> $search
             ];
 
             $users = getUsers($params);

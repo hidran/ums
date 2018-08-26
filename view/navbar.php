@@ -69,13 +69,17 @@
 
                     <?php } ?>
                 </select>
-             </div>
+             </div>&nbsp;
                 <input class="form-control mr-sm-2" type="text"
-
+                       name="search" id="search" value="<?=$search?>"
                        placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
 
                     Search
+                </button>&nbsp;
+                <button class="btn btn-warning my-2 my-sm-0" type="reset">
+
+                    RESET
                 </button>
             </form>
         </div>
