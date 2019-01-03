@@ -186,7 +186,46 @@ function countUsers( array $params = []){
     return $total;
 
 }
+function copyAvatar(int $userid){
 
+        $result = [
+          'success' => false,
+          'message' => 'PROBLEM SAVING IMAGE',
+            'filename' => ''
+        ] ;
+        if(empty($_FILES)){
+            $result['message'] = 'NO FILE UPLOADED';
+            return $result;
+        }
+
+        $FILE = $_FILES['avatar'];
+        if(!is_uploaded_file($FILE['tmp_name'])){
+            $result['message'] = 'NO FILE UPLOADED VIA HTTP POST';
+            return $result;
+        }
+         $finfo = finfo_open(FILEINFO_MIME);
+        $info =  finfo_file($finfo , $FILE['tmp_name']);
+
+        if(stristr($info ,'image/jpeg') === false){
+            $result['message'] = 'THE UPLOADED FILE IS NOT JPEG';
+            return $result;
+        }
+        $maxSize = getConfig('maxFileUpload');
+       if($FILE['size'] > $maxSize){
+
+           $result['message'] = 'THE UPLOADED FILE IS TOO BIG. MAX SIZE IS '. $maxSize;
+           return $result;
+       }
+       $filename = $userid.'_'.str_replace(' ', '',microtime(true));
+die(AVATAR_DIR.$filename);
+      if(!move_uploaded_file($FILE['tmp_name'], AVATAR_DIR.$filename)){
+          die($filename);
+          $result['message'] = 'COULD NOT MOVE UPLOADED FILE';
+          return $result;
+      }
+     $result['filename'] = $filename;
+      return $result;
+}
 //insertRandUser(1000, $mysqli);
 
 

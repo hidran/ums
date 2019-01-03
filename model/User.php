@@ -46,10 +46,12 @@ function storeUser(array $data, int $id){
     $username = $conn->escape_string($data['username']);
     $email = $conn->escape_string($data['email']);
     $fiscalcode = $conn->escape_string($data['fiscalcode']);
+    $avatar =  $conn->escape_string($data['avatar']);
+
     $age = $conn->escape_string($data['age']);
     $sql = 'UPDATE users SET ';
     $sql .= "username='$username', email='$email',fiscalcode='$fiscalcode',";
-    $sql .= "age=$age";
+    $sql .= "age=$age, avatar = '$avatar'";
     $sql .= ' WHERE id ='.$id;
     // echo $sql;
 

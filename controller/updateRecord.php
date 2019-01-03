@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once '../functions.php';
 $action = getParam('action', '');
 require '../model/User.php';
@@ -39,7 +40,10 @@ switch ($action) {
     case 'store':
         $data = $_POST;
         $id = getParam('id',0);
-        var_dump($_FILES);die;
+        $resCopy = copyAvatar($id);
+        if($resCopy['success']){
+            $data['avatar'] = $resCopy['filename'];
+        }
         $res = storeUser($data, $id);
 
         if( $res['success']){
@@ -47,7 +51,9 @@ switch ($action) {
         } else {
             $message = 'ERROR UPDATING USER '.$id .':'. $res['error'];
         }
-
+        if( !$resCopy['success']){
+            $message .= $resCopy['message'];
+        }
         $_SESSION['message'] = $message;
         $_SESSION['success'] = $res;
         header('Location:../index.php?'.$queryString);

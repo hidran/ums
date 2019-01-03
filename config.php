@@ -25,4 +25,6 @@ return [
     'maxFileUpload' => $maxUpload
 ];
 
+ const AVATAR_DIR = 'avatar/';
+
 
