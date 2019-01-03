@@ -41,6 +41,7 @@ switch ($action) {
         $data = $_POST;
         $id = getParam('id',0);
         $resCopy = copyAvatar($id);
+
         if($resCopy['success']){
             $data['avatar'] = $resCopy['filename'];
         }

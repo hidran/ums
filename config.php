@@ -1,4 +1,5 @@
 <?php
+
 $mega = 1024;
 $giga = $mega*1024;
 
@@ -22,9 +23,10 @@ return [
         'id','email','fiscalcode','age','username'
     ],
     'numLinkNavigator' => 5,
-    'maxFileUpload' => $maxUpload
+    'maxFileUpload' => $maxUpload,
+    'avatarDir' => $_SERVER['DOCUMENT_ROOT'].'/avatar/'
 ];
 
- const AVATAR_DIR = 'avatar/';
+
 
 

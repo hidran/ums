@@ -216,13 +216,16 @@ function copyAvatar(int $userid){
            $result['message'] = 'THE UPLOADED FILE IS TOO BIG. MAX SIZE IS '. $maxSize;
            return $result;
        }
-       $filename = $userid.'_'.str_replace(' ', '',microtime(true));
-die(AVATAR_DIR.$filename);
-      if(!move_uploaded_file($FILE['tmp_name'], AVATAR_DIR.$filename)){
-          die($filename);
+       $filename = $userid.'_'.str_replace('.', '',microtime(true)).'.jpg';
+       $avatarDir = getConfig('avatarDir');
+
+      if(!move_uploaded_file($FILE['tmp_name'], $avatarDir.$filename)){
+
           $result['message'] = 'COULD NOT MOVE UPLOADED FILE';
           return $result;
       }
+    $result['success'] = 1;
+    $result['message'] = '';
      $result['filename'] = $filename;
       return $result;
 }
