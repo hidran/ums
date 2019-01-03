@@ -40,7 +40,13 @@ switch ($action) {
         $data = $_POST;
         $id = getParam('id',0);
         $res = storeUser($data, $id);
-        $message = $res ? 'USER '.$id.' UPDATED' : 'ERROR UPDATING USER '.$id;
+
+        if( $res['success']){
+            $message = 'USER '.$id.' UPDATED' ;
+        } else {
+            $message = 'ERROR UPDATING USER '.$id .':'. $res['error'];
+        }
+
         $_SESSION['message'] = $message;
         $_SESSION['success'] = $res;
         header('Location:../index.php?'.$queryString);

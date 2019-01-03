@@ -79,6 +79,7 @@
     }
 
     function getUsers( array $params = []){
+          //var_dump($params);
 
         /**
          * @var $conn mysqli
@@ -120,7 +121,7 @@
                  $sql .= " OR id LIKE '%$search%' ";
              }
             $sql .= " ORDER BY $orderBy $orderDir LIMIT $start , $limit ";
-            //echo $sql;
+           // echo $sql;
             $res = $conn->query($sql);
             if($res) {
 
@@ -186,7 +187,7 @@ function countUsers( array $params = []){
 
 }
 
-//insertRandUser(100, $mysqli);
+//insertRandUser(1000, $mysqli);
 
 
 

@@ -53,7 +53,7 @@
             <form class="form-inline mt-2 mt-md-0" method="get" action="<?= $pageUrl ?>" id="searchForm">
                 <input type="hidden" name="page" id="page" value="<?=$page?>">
                 <div class="form-group">
-                    <label for="orderBy ">ORDER BY</label>
+                    <label for="orderBy">ORDER BY</label>
 
                     <select name="orderBy" class="form-control"
                             id="orderBy"
@@ -73,7 +73,7 @@
                 </div>&nbsp;
 
                 <div class="form-group">
-                    <label for="orderBy ">ORDER</label>
+                    <label for="orderDir">ORDER</label>
 
                     <select name="orderDir" class="form-control"
                             id="orderDir"
@@ -86,7 +86,7 @@
                     </select>
                 </div>&nbsp;
                 <div class="form-group">
-                    <label for="recordsPerPage ">RECORDS</label>
+                    <label for="recordsPerPage">RECORDS</label>
 
                     <select name="recordsPerPage" class="form-control"
                             id="recordsPerPage"

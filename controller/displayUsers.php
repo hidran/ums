@@ -16,9 +16,9 @@ unset($orderByParams['orderDir']);
 unset($orderByNavigatorParams['page']);
 
 // key=value&key2=value2 ...
-$orderByQueryString = http_build_query($orderByParams, '&amp;');
+$orderByQueryString = http_build_query($orderByParams, '','&amp;');
 
-$navOrderByQueryString = http_build_query($orderByNavigatorParams, '&amp;');
+$navOrderByQueryString = http_build_query($orderByNavigatorParams, '','&amp;');
 
 $totalUsers = countUsers($params);
 

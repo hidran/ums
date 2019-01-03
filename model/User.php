@@ -36,12 +36,17 @@ function storeUser(array $data, int $id){
     /**
      * @var $conn mysqli
      */
+    $result = [
+        'success' => 1,
+        'affectedRows' => 0,
+        'error' => ''
+    ];
+
     $conn = $GLOBALS['mysqli'];
     $username = $conn->escape_string($data['username']);
     $email = $conn->escape_string($data['email']);
     $fiscalcode = $conn->escape_string($data['fiscalcode']);
     $age = $conn->escape_string($data['age']);
-    $result = 0;
     $sql = 'UPDATE users SET ';
     $sql .= "username='$username', email='$email',fiscalcode='$fiscalcode',";
     $sql .= "age=$age";
@@ -50,9 +55,11 @@ function storeUser(array $data, int $id){
 
     $res = $conn->query($sql);
     if($res) {
-        $result =  $conn->affected_rows;
+        $result['affectedRows'] =  $conn->affected_rows;
+
     } else {
-        $result =  -1;
+        $result['success'] = false;
+        $result['error'] = $conn->error;
     }
     return  $result;
 }

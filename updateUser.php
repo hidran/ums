@@ -6,6 +6,13 @@ require_once 'headerInclude.php';
     <?php
       $id = getParam('id', 0);
       $action = getParam('action','');
+      $orderDir = getParam('orderDir', 'ASC');
+      $search = getParam('search' ,'') ;
+      $page = getParam('page',1);
+       $paramsArray = compact('orderBy','orderDir','page','search');
+      $defaultParams = http_build_query($paramsArray, '','&amp;');
+
+    $orderBy = getParam('orderBy', 'id');
       if($id){
           $user = getUser($id);
       } else {

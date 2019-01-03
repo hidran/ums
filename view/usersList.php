@@ -50,7 +50,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
             <td><?= $user['age'] ?></td>
             <td>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                         <a class="btn btn-success"
 
                            href="<?=$updateUrl?>?<?=$navOrderByQueryString?>&page=<?=$page?>&action=update&id=<?=$user['id']?>">
@@ -58,7 +58,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
                             UPDATE
                         </a>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <a onclick="return confirm('DELETE USER?')"
                            class="btn btn-danger"
 

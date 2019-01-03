@@ -1,4 +1,4 @@
-<form id="updateForm" action="controller/updateRecord.php" method="post">
+<form id="updateForm" action="controller/updateRecord.php?<?=$defaultParams?>" method="post">
     <div class="form-group row">
         <input type="hidden" name="id" value="<?=$user['id']?>">
 
@@ -39,6 +39,7 @@
     </div>
     <div class="form-group row">
         <div class="col-sm-2"></div>
+        <?php if($user['id']) {?>
         <div class="col-sm-5 text-center">
             <a href="<?=$deleteUserUrl?>?id=<?=$user['id']?>&action=delete" onclick="return confirm('DELETE USER?')"
                     class="btn btn-danger">
@@ -47,7 +48,8 @@
             </a>
 
         </div>
-        <div class="col-sm-5  text-center">
+        <?php } ?>
+        <div class="<?=$user['id']?'col-sm-5':'col-sm-12'?>  text-center">
             <button class="btn btn-success">
 
             <i class="fa fa-pen"></i>
