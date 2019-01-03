@@ -1,4 +1,4 @@
-<form id="updateForm" action="controller/updateRecord.php?<?=$defaultParams?>" method="post">
+<form enctype="multipart/form-data" id="updateForm" action="controller/updateRecord.php?<?=$defaultParams?>" method="post">
     <div class="form-group row">
         <input type="hidden" name="id" value="<?=$user['id']?>">
 
@@ -35,6 +35,16 @@
                    value="<?=$user['age']?>"
                    name="age"
                    id="age">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="avatar" class="col-sm-2 col-form-label">AVATAR</label>
+        <div class="col-sm-10">
+            <input required type="file"  class="form-control  form-control-lg"
+
+                   name="avatar" accept="image/jpeg"
+
+                   id="avatar">
         </div>
     </div>
     <div class="form-group row">
