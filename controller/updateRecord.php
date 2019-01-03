@@ -39,6 +39,7 @@ switch ($action) {
     case 'store':
         $data = $_POST;
         $id = getParam('id',0);
+        var_dump($_FILES);die;
         $res = storeUser($data, $id);
 
         if( $res['success']){

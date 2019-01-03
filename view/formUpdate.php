@@ -40,7 +40,10 @@
     <div class="form-group row">
         <label for="avatar" class="col-sm-2 col-form-label">AVATAR</label>
         <div class="col-sm-10">
-            <input required type="file"  class="form-control  form-control-lg"
+            <input type="hidden" name="MAX_FILE_SIZE"
+                   value="<?=getConfig('maxFileUpload')?>" />
+
+            <input required type="file"  class="form-control form-control-lg "
 
                    name="avatar" accept="image/jpeg"
 
