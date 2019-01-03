@@ -224,6 +224,36 @@ function copyAvatar(int $userid){
           $result['message'] = 'COULD NOT MOVE UPLOADED FILE';
           return $result;
       }
+
+      $newImg = imagecreatefromjpeg( $avatarDir.$filename);
+       if(!$newImg) {
+           $result['message'] = 'COULD NOT CREATE THUMBNAIL RESOURCE';
+           return $result;
+       }
+      $thumbNailImag = imagescale($newImg, getConfig('thumbnail_width', 120));
+    if(!$thumbNailImag) {
+        $result['message'] = 'COULD NOT SCALE THUMBNAIL RESOURCE';
+        return $result;
+    }
+
+          imagejpeg($thumbNailImag, $avatarDir.'thumb_'.$filename);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $result['success'] = 1;
     $result['message'] = '';
      $result['filename'] = $filename;
