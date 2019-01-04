@@ -14,6 +14,7 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
+
 </head>
 
 <body>

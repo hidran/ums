@@ -24,7 +24,9 @@ return [
     ],
     'numLinkNavigator' => 5,
     'maxFileUpload' => $maxUpload,
+
     'avatarDir' => $_SERVER['DOCUMENT_ROOT'].'/avatar/',
+    'webAvatarDir' => '/avatar/',
     'thumbnail_width' => 200
 ];
 

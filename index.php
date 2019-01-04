@@ -4,7 +4,7 @@
 
 
 <!-- Begin page content -->
-<main  class="container">
+<main  class="container-fluid">
     <h1 class="text-center p-2">USER MANAGEMENT SYSTEM </h1>
     <?php
 

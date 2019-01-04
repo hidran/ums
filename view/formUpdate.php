@@ -39,11 +39,23 @@
     </div>
     <div class="form-group row">
         <label for="avatar" class="col-sm-2 col-form-label">AVATAR</label>
+        <?php
+        $webAvatarDir = getConfig('webAvatarDir');
+        $avatarDir = getConfig('avatarDir');
+         $thumbWidth = getConfig('thumbnail_width');
+          $avatarImg = file_exists($avatarDir.'thumb_'.$user['avatar'])? $webAvatarDir.'thumb_'.$user['avatar'] : $webAvatarDir.'placeholder.jpg';
+        ?>
+        <div class="col-sm-10">
+        <img src="<?=$avatarImg?>" width="<?=$thumbWidth?>" alt="">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="avatar" class="col-sm-2 col-form-label">AVATAR</label>
         <div class="col-sm-10">
             <input type="hidden" name="MAX_FILE_SIZE"
                    value="<?=getConfig('maxFileUpload')?>" />
 
-            <input required type="file"  class="form-control form-control-lg "
+            <input onchange="previewFile()" required type="file"  class="form-control form-control-lg "
 
                    name="avatar" accept="image/jpeg"
 

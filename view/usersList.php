@@ -19,7 +19,8 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
                 NAME
             </a>
         </th>
-        <th class="<?= $orderBy === 'fiscalcode' ? $orderDirClass : '' ?>">
+        <th>AVATAR</th>
+       <th class="<?= $orderBy === 'fiscalcode' ? $orderDirClass : '' ?>">
             <a href="<?= $pageUrl ?>?<?=$orderByQueryString?>&orderDir=<?=$orderDir?>&orderBy=fiscalcode">
                 FISCAL CODE</a>
         </th>
@@ -40,11 +41,20 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
     <?php
     if ($users) {
 
-    foreach ($users as $user) { ?>
+        $webAvatarDir = getConfig('webAvatarDir');
+        $avatarDir = getConfig('avatarDir');
+         $thumbWidth = getConfig('thumbnail_width');
+
+    foreach ($users as $user) {
+
+        $avatarImg = file_exists($avatarDir.'thumb_'.$user['avatar'])? $webAvatarDir.'thumb_'.$user['avatar'] : $webAvatarDir.'placeholder.jpg';
+
+        ?>
 
         <tr>
             <td><?= $user['id'] ?></td>
             <td><?= $user['username'] ?></td>
+            <td><img src="<?=$avatarImg?>" alt=""></td>
             <td><?= $user['fiscalcode'] ?></td>
             <td><a href="mailto:<?= $user['email'] ?>"> <?= $user['email'] ?></a></td>
             <td><?= $user['age'] ?></td>

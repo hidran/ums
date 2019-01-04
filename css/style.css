@@ -59,7 +59,9 @@ code {
     cursor: default;
 }
 
-
+.container-fluid{
+    max-width: 1400px;
+}
 
 
 
