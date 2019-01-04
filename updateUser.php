@@ -22,6 +22,7 @@ require_once 'headerInclude.php';
               'age' => '',
               'fiscalcode' => '',
               'id' => '',
+              'avatar' => ''
           ];
       }
 

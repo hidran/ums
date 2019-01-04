@@ -11,7 +11,7 @@ $updateUrl = 'updateUser.php';
 
 $deleteUserUrl = 'controller/updateRecord.php';
 
-$orderDir = getParam('orderDir', 'ASC');
+$orderDir = getParam('orderDir', 'DESC');
 
 $orderBy = getParam('orderBy', 'id');
 

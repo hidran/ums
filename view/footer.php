@@ -13,7 +13,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/scripts.js"></script>
 <script>
-    $('#message').fadeOut(4000);
+    $('#message').fadeOut(8000);
 </script>
 </body>
 </html>

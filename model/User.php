@@ -25,8 +25,6 @@ function getUser(int $id){
     $res = $conn->query($sql);
     if($res && $res->num_rows) {
         $result = $res->fetch_assoc();
-    } else {
-        die($conn->error);
     }
    return  $result;
 }
@@ -72,20 +70,39 @@ function saveUser(array $data){
      * @var $conn mysqli
      */
     $conn = $GLOBALS['mysqli'];
+
+    $result = [
+        'id' => 0,
+        'success' => false,
+        'message' => 'PROBLEM SAVING USER',
+
+    ] ;
     $username = $conn->escape_string($data['username']);
     $email = $conn->escape_string($data['email']);
     $fiscalcode = $conn->escape_string($data['fiscalcode']);
     $age = (int)$data['age'];
-    $result = 0;
+
     $sql = 'INSERT INTO users (username, email, fiscalcode,age) ';
-    $sql .= " VALUE('$username', '$email','$fiscalcode',$age)";
+    $sql .= " VALUES('$username', '$email','$fiscalcode',$age)";
   //echo $sql;
     $res = $conn->query($sql);
     if($res && $conn->affected_rows) {
-        $result =  $conn->insert_id;
+        $result['id'] =  $conn->insert_id;
+        $result['success'] = true;
     } else {
-         die( $conn->error);
-        $result =  -1;
+        $result['message'] = $conn->error;
     }
     return  $result;
+}
+function updateUserAvatar(int $id, string $avatar = null){
+     if(!$avatar) {
+         return false;
+     }
+    $conn = $GLOBALS['mysqli'];
+    $avatar =  $conn->escape_string($avatar);
+    $sql = "UPDATE users SET avatar = '$avatar' WHERE id =$id ";
+
+    $res = $conn->query($sql);
+    return $res && $conn->affected_rows;
+
 }

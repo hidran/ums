@@ -200,6 +200,7 @@ function copyAvatar(int $userid){
 
         $FILE = $_FILES['avatar'];
         if(!is_uploaded_file($FILE['tmp_name'])){
+
             $result['message'] = 'NO FILE UPLOADED VIA HTTP POST';
             return $result;
         }
@@ -238,27 +239,56 @@ function copyAvatar(int $userid){
 
           imagejpeg($thumbNailImag, $avatarDir.'thumb_'.$filename);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $result['success'] = 1;
     $result['message'] = '';
      $result['filename'] = $filename;
       return $result;
 }
+
+function removeOldAvatar(int $id, array $userData = null){
+
+          $userData = $userData?:getUser($id);
+
+          if(!$userData || !$userData['avatar']){
+              return;
+          }
+
+          $avatarFolder = getConfig('avatarDir');
+
+          $filename = $avatarFolder.$userData['avatar'];
+
+          $filenameThumb = $avatarFolder.'thumb_'.$userData['avatar'];
+
+          if(file_exists($filename)){
+              unlink($filename);
+          }
+        if(file_exists($filenameThumb)){
+            unlink($filenameThumb);
+        }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //insertRandUser(1000, $mysqli);
 
 

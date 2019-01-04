@@ -14,20 +14,34 @@ switch ($action) {
 
 
         $id = getParam('id', 0);
+        $userData = getUser($id);
         $res = delete($id);
+        if($res){
+            removeOldAvatar($id,$userData);
+        }
         $message = $res ? 'USER '.$id.' DELETED' : 'ERROR DELETING USER '.$id;
         $_SESSION['message'] = $message;
         $_SESSION['success'] = $res;
-        header('Location:../index.php?'.$queryString);
+        $url = '../index.php?'.$queryString;
+        header('Location:'.$url);
         break;
+
     case 'save':
         $data = $_POST;
 
         $res = saveUser($data);
-        if($res){
-            $message=  'USER INSERTED WITH ID '.$res. ' INSERTED';
+        var_dump($res);
+        //die;
+        if($res['id'] > 0){
+            $resCopy = copyAvatar($res['id']);
+
+            if($resCopy['success']){
+                updateUserAvatar($res['id'], $resCopy['filename']);
+            }
+
+            $message =  'USER INSERTED WITH ID '.$res['id']. ' INSERTED';
         } else {
-            $message=    'ERROR INSERTING USER '. $data['username'];
+            $message=    'ERROR INSERTING USER '. $data['username']. ':'.$res['message'];
         }
 
         $_SESSION['message'] = $message;
@@ -43,6 +57,7 @@ switch ($action) {
         $resCopy = copyAvatar($id);
 
         if($resCopy['success']){
+            removeOldAvatar($id);
             $data['avatar'] = $resCopy['filename'];
         }
         $res = storeUser($data, $id);
