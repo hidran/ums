@@ -27,7 +27,8 @@ return [
 
     'avatarDir' => $_SERVER['DOCUMENT_ROOT'].'/avatar/',
     'webAvatarDir' => '/avatar/',
-    'thumbnail_width' => 200
+    'thumbnail_width' => 200,
+    'previewimg_width' => 600
 ];
 
 

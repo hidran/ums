@@ -232,13 +232,14 @@ function copyAvatar(int $userid){
            return $result;
        }
       $thumbNailImag = imagescale($newImg, getConfig('thumbnail_width', 120));
+       $previewImg = imagescale($newImg, getConfig('previewimg_width', 400));
     if(!$thumbNailImag) {
         $result['message'] = 'COULD NOT SCALE THUMBNAIL RESOURCE';
         return $result;
     }
 
-          imagejpeg($thumbNailImag, $avatarDir.'thumb_'.$filename);
-
+    imagejpeg($previewImg, $avatarDir.'preview_'.$filename);
+    imagejpeg($thumbNailImag, $avatarDir.'thumb_'.$filename);
     $result['success'] = 1;
     $result['message'] = '';
      $result['filename'] = $filename;

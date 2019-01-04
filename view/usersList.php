@@ -47,14 +47,31 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
 
     foreach ($users as $user) {
 
-        $avatarImg = file_exists($avatarDir.'thumb_'.$user['avatar'])? $webAvatarDir.'thumb_'.$user['avatar'] : $webAvatarDir.'placeholder.jpg';
+        $avatarThumbImg = $user['avatar'] &&  file_exists($avatarDir.'thumb_'.$user['avatar'])? $webAvatarDir.'thumb_'.$user['avatar'] : $webAvatarDir.'placeholder.jpg';
+        $avatarPreviewImg = $user['avatar'] &&  file_exists($avatarDir.'preview_'.$user['avatar'])? $webAvatarDir.'preview_'.$user['avatar'] : '';
+        $avatarBigImg = $user['avatar'] &&  file_exists($avatarDir.$user['avatar'])? $webAvatarDir.$user['avatar'] : '';
 
         ?>
 
         <tr>
             <td><?= $user['id'] ?></td>
             <td><?= $user['username'] ?></td>
-            <td><img src="<?=$avatarImg?>" alt=""></td>
+            <td>
+                <?php if($avatarBigImg) : ?>
+                <a href="<?=$avatarBigImg?>" target="_blank" class="thumbnail">
+                <img class="avatar" src="<?=$avatarThumbImg?>" alt="">
+                    <?php if($avatarPreviewImg) : ?>
+                    <span>
+                        <img class="avatar" src="<?=$avatarPreviewImg?>" alt="">
+                    </span>
+                <?php endif;?>
+                </a>
+        <?php
+                else:?>
+                    <img class="avatar" src="<?=$avatarThumbImg?>" alt="">
+              <?php  endif;?>
+
+            </td>
             <td><?= $user['fiscalcode'] ?></td>
             <td><a href="mailto:<?= $user['email'] ?>"> <?= $user['email'] ?></a></td>
             <td><?= $user['age'] ?></td>

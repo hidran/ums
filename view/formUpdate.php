@@ -46,7 +46,7 @@
           $avatarImg = file_exists($avatarDir.'thumb_'.$user['avatar'])? $webAvatarDir.'thumb_'.$user['avatar'] : $webAvatarDir.'placeholder.jpg';
         ?>
         <div class="col-sm-10">
-        <img src="<?=$avatarImg?>" width="<?=$thumbWidth?>" alt="">
+        <img  class="avatar" src="<?=$avatarImg?>" width="<?=$thumbWidth?>" alt="">
         </div>
     </div>
     <div class="form-group row">
