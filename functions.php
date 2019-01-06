@@ -214,7 +214,7 @@ function copyAvatar(int $userid){
         $maxSize = getConfig('maxFileUpload');
        if($FILE['size'] > $maxSize){
 
-           $result['message'] = 'THE UPLOADED FILE IS TOO BIG. MAX SIZE IS '. $maxSize;
+           $result['message'] = 'THE UPLOADED FILE IS TOO BIG.'.$FILE['size'].' MAX SIZE IS '. $maxSize;
            return $result;
        }
        $filename = $userid.'_'.str_replace('.', '',microtime(true)).'.jpg';

@@ -1,6 +1,6 @@
 <?php
-
-$mega = 1024;
+//echo $_SERVER['DOCUMENT_ROOT'];
+$mega = 1024*1024;
 $giga = $mega*1024;
 
 $maxUpload =  ini_get('upload_max_filesize');
