@@ -110,6 +110,18 @@ code {
 }
 
 
+#loginform{
+
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 60%;
+
+}
 
 
+body{
+    background-color: #67be4b;
+}
 

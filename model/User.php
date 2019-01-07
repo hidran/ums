@@ -28,7 +28,28 @@ function getUser(int $id){
     }
    return  $result;
 }
+function getUserByEmail(string $email){
 
+    /**
+     * @var $conn mysqli
+     */
+    $conn = $GLOBALS['mysqli'];
+    $result = [];
+    $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if(!$email){
+        $result;
+    }
+    $email = mysqli_escape_string($conn , $email);
+
+    $sql = "SELECT *  FROM users WHERE email ='$email' ";
+    // echo $sql;
+
+    $res = $conn->query($sql);
+    if($res && $res->num_rows) {
+        $result = $res->fetch_assoc();
+    }
+    return  $result;
+}
 function storeUser(array $data, int $id){
 
     /**
