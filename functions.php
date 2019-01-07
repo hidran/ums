@@ -128,7 +128,7 @@ require_once 'model/User.php';
 
             $sql = 'INSERT INTO users (username, email, fiscalcode, age) VALUES ';
             $sql .= " ('$username','$email', '$fiscalcode', $age) ";
-            echo $totale .' '.$sql.'<br>';
+          //  echo $totale .' '.$sql.'<br>';
             $res = $conn->query($sql);
             if (!$res) {
                 echo $conn->error.'<br>';
@@ -181,7 +181,7 @@ require_once 'model/User.php';
                  $sql .= " OR id LIKE '%$search%' ";
              }
             $sql .= " ORDER BY $orderBy $orderDir LIMIT $start , $limit ";
-            echo $sql;
+        //    echo $sql;
             $res = $conn->query($sql);
             if($res) {
 
@@ -329,10 +329,16 @@ function removeOldAvatar(int $id, array $userData = null){
 
 }
 
+ function isUserLoggedin(){
+     return $_SESSION['loggedin'] ?? false;
+ }
 
-
-
-
+function getUserLoggedInFullname(){
+    return $_SESSION['userData']['username'] ?? '';
+}
+ function getUserRole(){
+     return $_SESSION['userData']['roletype'] ?? '';
+ }
 
 
 

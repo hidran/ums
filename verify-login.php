@@ -8,7 +8,19 @@ if(!empty($_POST)){
     $password = $_POST['password'] ?? '';
 
     $result = verifyLogin($email, $password, $token);
-    print_r($result);
+    unset($_SESSION['csrf']);
+    if($result['success']){
+        session_regenerate_id();
+       $_SESSION['loggedin'] = true;
+       unset($result['user']['password']);
+       $_SESSION['userData']  = $result['user'];
+       header('Location:index.php');
+       exit;
+
+    } else {
+        $_SESSION['message'] = $result['message'];
+        header('Location: login.php');
+    }
 } else {
     header('Location: login.php');
 }

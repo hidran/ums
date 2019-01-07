@@ -1,4 +1,11 @@
 <?php
+session_start();
+require_once 'functions.php';
+
+if(!isUserLoggedin()){
+    header('Location: login.php');
+    exit;
+}
  require_once 'headerInclude.php';
 ?>
 
