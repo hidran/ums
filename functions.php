@@ -121,7 +121,7 @@
                  $sql .= " OR id LIKE '%$search%' ";
              }
             $sql .= " ORDER BY $orderBy $orderDir LIMIT $start , $limit ";
-           // echo $sql;
+            echo $sql;
             $res = $conn->query($sql);
             if($res) {
 
@@ -200,8 +200,8 @@ function copyAvatar(int $userid){
 
         $FILE = $_FILES['avatar'];
         if(!is_uploaded_file($FILE['tmp_name'])){
-
-            $result['message'] = 'NO FILE UPLOADED VIA HTTP POST';
+            $result['success'] = true;
+            $result['message'] = '';
             return $result;
         }
          $finfo = finfo_open(FILEINFO_MIME);

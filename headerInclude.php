@@ -15,7 +15,7 @@ $orderDir = getParam('orderDir', 'DESC');
 
 $orderBy = getParam('orderBy', 'id');
 
-$orderByColumns =  getConfig('orderByColumns',['id','lastname','email','fiscalcode','age']);
+$orderByColumns =  getConfig('orderByColumns',['id','lastname','email','fiscalcode','age','roletype']);
 
 $recordsPerPage = getParam('recordsPerPage', getConfig('recordsPerPage'));
 

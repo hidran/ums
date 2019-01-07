@@ -1,3 +1,5 @@
+<?php
+echo password_hash('testhidran',PASSWORD_DEFAULT);?>
 <form enctype="multipart/form-data" id="updateForm" action="controller/updateRecord.php?<?=$defaultParams?>" method="post">
     <div class="form-group row">
         <input type="hidden" name="id" value="<?=$user['id']?>">
@@ -17,6 +19,28 @@
             <input type="email" required class="form-control  form-control-lg"
                    value="<?=$user['email']?>"
                    name="email" id="email" placeholder="Email">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="password" class="col-sm-2 col-form-label">PASSWORD</label>
+        <div class="col-sm-10">
+            <input type="password"  class="form-control  form-control-lg"
+                   value=""
+                   name="password" id="password" placeholder="password">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="roletype" class="col-sm-2 col-form-label">ROLE</label>
+        <div class="col-sm-10">
+        <select name="roletype" id="roletype" class="form-control">
+            <?php
+            foreach(getConfig('roletypes', []) as $role):
+                 $sel = $user['roletype'] === $role ? 'selected': '';
+                echo "\n<option $sel value='$role'>$role</option>";
+             endforeach;
+            ?>
+        </select>
         </div>
     </div>
     <div class="form-group row">
@@ -55,7 +79,7 @@
             <input type="hidden" name="MAX_FILE_SIZE"
                    value="<?=getConfig('maxFileUpload')?>" />
 
-            <input onchange="previewFile()" required type="file"  class="form-control form-control-lg "
+            <input onchange="previewFile()"  type="file"  class="form-control form-control-lg "
 
                    name="avatar" accept="image/jpeg"
 

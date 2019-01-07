@@ -19,6 +19,11 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
                 NAME
             </a>
         </th>
+        <th class="<?= $orderBy === 'roletype' ? $orderDirClass : '' ?>">
+            <a href="<?= $pageUrl ?>?<?=$orderByQueryString?>&orderDir=<?=$orderDir?>&orderBy=roletype">
+                ROLE
+            </a>
+        </th>
         <th>AVATAR</th>
        <th class="<?= $orderBy === 'fiscalcode' ? $orderDirClass : '' ?>">
             <a href="<?= $pageUrl ?>?<?=$orderByQueryString?>&orderDir=<?=$orderDir?>&orderBy=fiscalcode">
@@ -56,6 +61,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
         <tr>
             <td><?= $user['id'] ?></td>
             <td><?= $user['username'] ?></td>
+            <td><?= $user['roletype'] ?></td>
             <td>
                 <?php if($avatarBigImg) : ?>
                 <a href="<?=$avatarBigImg?>" target="_blank" class="thumbnail">

@@ -20,7 +20,7 @@ return [
         5,10,20,30,50,100
     ],
     'orderByColumns' => [
-        'id','email','fiscalcode','age','username'
+        'id','email','fiscalcode','age','username','roletype'
     ],
     'numLinkNavigator' => 5,
     'maxFileUpload' => $maxUpload,
@@ -28,7 +28,8 @@ return [
     'avatarDir' => $_SERVER['DOCUMENT_ROOT'].'/avatar/',
     'webAvatarDir' => '/avatar/',
     'thumbnail_width' => 200,
-    'previewimg_width' => 600
+    'previewimg_width' => 600,
+    'roletypes' => ['user','editor','admin']
 ];
 
 

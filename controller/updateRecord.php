@@ -30,7 +30,7 @@ switch ($action) {
         $data = $_POST;
 
         $res = saveUser($data);
-        var_dump($res);
+        //var_dump($res);
         //die;
         if($res['id'] > 0){
             $resCopy = copyAvatar($res['id']);
