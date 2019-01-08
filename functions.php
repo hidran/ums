@@ -339,8 +339,20 @@ function getUserLoggedInFullname(){
  function getUserRole(){
      return $_SESSION['userData']['roletype'] ?? '';
  }
+function getUserEmail(){
+    return $_SESSION['userData']['email'] ?? '';
+}
+function isUserAdmin(){
+    return getUserRole() === 'admin';
+}
+function userCanUpdate(){
+    $role = getUserRole();
+    return  $role === 'admin' || $role === 'editor';
+}
+function userCanDelete(){
 
-
+    return  isUserAdmin();
+}
 
 
 

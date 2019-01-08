@@ -14,6 +14,15 @@ require_once 'view/top.php';
 <section class="container">
     <div id="loginform">
 <h1>PLEASE LOGIN</h1>
+        <?php
+        if(!empty($_SESSION['message'])){ ?>
+           <div class="alert alert-info" id="message">
+               <?=$_SESSION['message']?>
+           </div>
+     <?php
+            $_SESSION['message'] = '';
+        }
+        ?>
     <form action="verify-login.php" method="post">
         <input type="hidden" name="_csrf" value="<?=$token?>">
         <div class="form-group">

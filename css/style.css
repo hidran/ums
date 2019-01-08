@@ -125,3 +125,21 @@ body{
     background-color: #67be4b;
 }
 
+.navbar-login
+{
+    width: auto;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}

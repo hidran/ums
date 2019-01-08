@@ -1,5 +1,5 @@
-<?php
-echo password_hash('testhidran',PASSWORD_DEFAULT);?>
+
+
 <form enctype="multipart/form-data" id="updateForm" action="controller/updateRecord.php?<?=$defaultParams?>" method="post">
     <div class="form-group row">
         <input type="hidden" name="id" value="<?=$user['id']?>">
@@ -79,7 +79,7 @@ echo password_hash('testhidran',PASSWORD_DEFAULT);?>
             <input type="hidden" name="MAX_FILE_SIZE"
                    value="<?=getConfig('maxFileUpload')?>" />
 
-            <input onchange="previewFile()"  type="file"  class="form-control form-control-lg "
+            <input onchange="previewFile()"  type="file"  class="form-control-file form-control-lg "
 
                    name="avatar" accept="image/jpeg"
 
@@ -88,7 +88,7 @@ echo password_hash('testhidran',PASSWORD_DEFAULT);?>
     </div>
     <div class="form-group row">
         <div class="col-sm-2"></div>
-        <?php if($user['id']) {?>
+        <?php if($user['id'] && userCanDelete()) {?>
         <div class="col-sm-5 text-center">
             <a href="<?=$deleteUserUrl?>?id=<?=$user['id']?>&action=delete" onclick="return confirm('DELETE USER?')"
                     class="btn btn-danger">
@@ -97,7 +97,9 @@ echo password_hash('testhidran',PASSWORD_DEFAULT);?>
             </a>
 
         </div>
-        <?php } ?>
+        <?php }
+           if(userCanUpdate()){
+        ?>
         <div class="<?=$user['id']?'col-sm-5':'col-sm-12'?>  text-center">
             <button class="btn btn-success">
 
@@ -105,5 +107,6 @@ echo password_hash('testhidran',PASSWORD_DEFAULT);?>
            <?= $user['id']?'UPDATE' : 'INSERT'?>
             </button>
         </div>
+        <?php } ?>
     </div>
 </form>

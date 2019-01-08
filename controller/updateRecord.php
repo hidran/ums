@@ -12,7 +12,9 @@ switch ($action) {
 
     case 'delete':
 
-
+       if(!userCanDelete()){
+           break;
+       }
         $id = getParam('id', 0);
         $userData = getUser($id);
         $res = delete($id);
@@ -27,6 +29,9 @@ switch ($action) {
         break;
 
     case 'save':
+        if(!userCanUpdate()){
+            break;
+        }
         $data = $_POST;
 
         $res = saveUser($data);
@@ -52,6 +57,9 @@ switch ($action) {
 
     break;
     case 'store':
+        if(!userCanUpdate()){
+            break;
+        }
         $data = $_POST;
         $id = getParam('id',0);
         $resCopy = copyAvatar($id);

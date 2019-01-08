@@ -26,4 +26,4 @@ $search = getParam('search' ,'') ;
 $page = getParam('page',1);
 
 
-require_once 'view/navbar.php';
+require_once 'view/topbar.php';

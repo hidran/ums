@@ -3,8 +3,13 @@ $orderDirClass = $orderDir;
 
 $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
 ?>
+<h1>USERS LIST</h1>
+<?php
+require_once 'view/navbar.php';
+?>
+
 <table class="table table-striped table-dark table-bordered">
-    <caption>USERS LIST</caption>
+
     <thead>
     <tr>
         <th colspan="6" class="text-center">TOTAL USERS <?= $totalUsers ?>. Page <?=$page?> of <?= $numPages ?></th>
@@ -83,6 +88,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
             <td><?= $user['age'] ?></td>
             <td>
                 <div class="row">
+        <?php if(userCanUpdate()) :?>
                     <div class="col-6">
                         <a class="btn btn-success"
 
@@ -91,6 +97,9 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
                             UPDATE
                         </a>
                     </div>
+                    <?php
+                endif;
+                if(userCanDelete()) :?>
                     <div class="col-6">
                         <a onclick="return confirm('DELETE USER?')"
                            class="btn btn-danger"
@@ -100,6 +109,7 @@ $orderDir = $orderDir === 'ASC' ? 'DESC' : 'ASC';
                             DELETE
                         </a>
                     </div>
+            <?php endif;?>
                 </div>
             </td>
         </tr>

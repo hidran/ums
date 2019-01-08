@@ -1,8 +1,12 @@
 <?php
 session_start();
 require_once 'functions.php';
-if(!isUserLoggedin()){
+if(!isUserLoggedin() ){
     header('Location: login.php');
+    exit;
+}
+if(!userCanUpdate()){
+    header('Location: index.php');
     exit;
 }
 require_once 'headerInclude.php';
