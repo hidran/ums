@@ -51,3 +51,35 @@ require_once 'view/top.php';
 <?php
 
 require_once 'view/footer.php';
+?>
+<script>
+$(
+  function (){
+ $('form').on('submit', function (evt) {
+    evt.preventDefault();
+    const  data = $(this).serialize();
+    $.ajax({
+        method:'post',
+        data : data,
+        url : 'verify-login-ajax.php',
+          success : function (response) {
+
+             const data = JSON.parse(response);
+             if(data){
+                 alert(data.message);
+                 if(data.success){
+
+                     location.href = 'index.php';
+
+                 }
+             }
+
+        },
+        failure : function () {
+            alert('PROBLEM CONTACTING SERVER')
+        },
+    })
+ })
+}
+);
+</script>
